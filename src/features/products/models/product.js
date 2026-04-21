@@ -4,7 +4,7 @@ export const formatProduct = (rawData, source = 'local') => {
     title: rawData.title || 'Unknown Product',
     price: Number(rawData.price) || 0,
     description: rawData.description || 'No description available.',
-    category: rawData.category || 'General',
+    category: rawData.category?.toLowerCase() || 'general',
     image: rawData.image || null, 
     
    

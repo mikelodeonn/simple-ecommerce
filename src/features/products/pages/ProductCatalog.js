@@ -23,7 +23,6 @@ export const ProductCatalog = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <ProductCard product={item} />}
         numColumns={2}
-
         refreshing={isLoading} 
         onRefresh={refresh}
         contentContainerStyle={styles.listContent}
