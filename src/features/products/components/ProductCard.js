@@ -17,10 +17,11 @@ export const ProductCard = ({ product }) => {
             <View style={styles.info}>
                 <Text style={styles.title} numberOfLines={2}>{product.title}</Text>
                 <Text style={styles.seller}>Seller: {product.seller}</Text>
+                <View style={styles.ratingContainer}>
+                    <Text style={styles.ratingText}>⭐ {product.rating.rate}</Text>
+                    <Text style={styles.countText}>({product.rating.count})</Text>
+                </View>
                 <Text style={styles.price}>${product.price.toFixed(2)}</Text>
-                <Text style={[styles.stock, { color: product.stock > 0 ? '#4CAF50' : '#F44336' }]}>
-                    Stock: {product.stock}
-                </Text>
             </View>
         </View>
     );
@@ -44,5 +45,26 @@ const styles = StyleSheet.create({
     title: { fontSize: 14, fontWeight: '600', color: '#333', height: 40 },
     seller: { fontSize: 11, color: '#777', marginBottom: 4 },
     price: { fontSize: 16, fontWeight: 'bold', color: '#1a1a1a' },
-    stock: { fontSize: 12, marginTop: 6, fontWeight: '500' }
+    ratingContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 4,
+        marginBottom: 4,
+    },
+    ratingText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#F1C40F', // Color dorado/amarillo para la estrella
+        marginRight: 4,
+    },
+    countText: {
+        fontSize: 12,
+        color: '#7F8C8D', // Gris suave para el número de reseñas
+    },
+    price: {
+        fontSize: 16,
+        fontWeight: '700',
+        color: '#2C3E50',
+        marginTop: 2,
+    },
 });
