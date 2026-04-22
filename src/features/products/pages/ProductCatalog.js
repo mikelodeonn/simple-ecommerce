@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   listContent: { paddingHorizontal: 8, paddingBottom: 30 },
   filterList: {
     paddingVertical: 15,
-    maxHeight: 70, // Importante para que no ocupe toda la pantalla
+    maxHeight: 70, 
     backgroundColor: '#FFFFFF',
   },
   chip: {
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   chipSelected: {
-    backgroundColor: '#2C3E50', // Color oscuro para destacar
+    backgroundColor: '#2C3E50', 
   },
   textChip: {
     color: '#7F8C8D',

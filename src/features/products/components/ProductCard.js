@@ -1,13 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 export const ProductCard = ({ product }) => {
+
+    const navigation = useNavigation();
 
     const imageSource = typeof product.image === 'string'
         ? { uri: product.image }
         : product.image;
 
     return (
+        <TouchableOpacity onPress = {() => navigation.navigate ('ProductDetail', {product})}>
         <View style={styles.card}>
             <Image
                 source={imageSource}
@@ -24,6 +28,7 @@ export const ProductCard = ({ product }) => {
                 <Text style={styles.price}>${product.price.toFixed(2)}</Text>
             </View>
         </View>
+        </TouchableOpacity>
     );
 };
 
