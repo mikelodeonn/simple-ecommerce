@@ -1,11 +1,12 @@
 import { SafeAreaView } from "react-native";
 import { ProductCatalog } from "./src/features/products/pages/ProductCatalog";
 import { AppNavigator } from "./src/navigation/AppNavigator";
+import { AuthProvider } from "./src/context/AuthContext";
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <AuthProvider>
       <AppNavigator/>
-    </SafeAreaView>
+    </AuthProvider>
   );
 }
