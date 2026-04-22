@@ -11,6 +11,8 @@ import { ProductCatalog } from '../features/products/pages/ProductCatalog';
 import { ProductDetail } from '../features/products/pages/ProductDetail';
 import { useAuth } from '../context/AuthContext';
 import { Profile } from '../features/auth/pages/Profile';
+import { StackScreen } from 'react-native-screens';
+import { EditProfile } from '../features/auth/pages/EditProfile';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -62,6 +64,7 @@ export const AppNavigator = () => {
         {user ? (
           <>
             <Stack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
+            <Stack.Screen name="EditProfile" component={EditProfile} options={{title: 'Edit Profile'}} />
             <Stack.Screen name="ProductDetail" component={ProductDetail} />
           </>
         ) : (

@@ -38,8 +38,18 @@ export const AuthProvider = ({children}) => {
         await storageService.remove('user_session');
     };
 
+    const updateUser = async (updatedData) => {
+        setUser(updatedData);
+        await storageService.save('user_session', updatedData);
+    };
+
+    const deleteAccount = async () => {
+        setUser(null);
+        await storageService.remove('user_session');
+    };
+
     return (
-        <AuthContext.Provider value={{ user, isLoading, login, logout }}>
+        <AuthContext.Provider value={{ user, isLoading, login, logout, updateUser, deleteAccount }}>
             {children}
         </AuthContext.Provider>
     );
