@@ -45,28 +45,28 @@ export const ProductDetail = () => {
 
 
                 <View style={styles.detailsSection}>
-                    <Text style={styles.sectionTitle}>Descripción</Text>
+                    <Text style={styles.sectionTitle}>Description</Text>
                     <Text style={styles.description}>{product.description}</Text>
 
                     <View style={styles.stockContainer}>
-                        <Text style={styles.stockLabel}>Disponibilidad:</Text>
+                        <Text style={styles.stockLabel}>Availability:</Text>
                         <Text style={[styles.stockValue, product.stock < 5 ? styles.lowStock : null]}>
-                            {product.stock} unidades
+                            {product.stock} units
                         </Text>
                     </View>
 
-                    <Text style={styles.sellerText}>Vendido por: {product.seller}</Text>
+                    <Text style={styles.sellerText}>Sold by: {product.seller}</Text>
                 </View>
             </ScrollView>
 
 
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.cartButton} onPress={handleAddToCart}>
-                    <Text style={styles.cartButtonText}>Agregar al Carrito</Text>
+                    <Text style={styles.cartButtonText}>Add to cart</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.buyButton} onPress={handleBuyNow}>
-                    <Text style={styles.buyButtonText}>Comprar Ahora</Text>
+                    <Text style={styles.buyButtonText}>Shop now</Text>
                 </TouchableOpacity>
             </View>
         </View>
