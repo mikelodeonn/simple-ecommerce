@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { storageService } from '../../../shared/services/storageService';
+import { useAuth } from '../../../context/AuthContext';
 
 export const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {login} = useAuth();
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -15,6 +17,7 @@ export const Login = ({ navigation }) => {
     const savedUser = await storageService.get('user_session');
 
     if (savedUser && savedUser.email === email && savedUser.password === password) {
+      await login (savedUser);
       navigation.replace('ProductCatalog');
     } else {
       Alert.alert("Error", "Correo o contraseña incorrectos.");
