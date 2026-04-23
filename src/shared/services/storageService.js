@@ -14,6 +14,7 @@ export const storageService = {
       return value ? JSON.parse(value) : null;
     } catch (e) {
       console.error("Error getting data", e);
+      return null;
     }
   },
   remove: async (key) => {

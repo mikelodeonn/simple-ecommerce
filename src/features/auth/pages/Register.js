@@ -1,73 +1,54 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView } from 'react-native';
-import { IconSelector } from '../components/IconSelector';
-import { storageService } from '../../../shared/services/storageService';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator, SafeAreaView } from 'react-native';
 import { useAuth } from '../../../context/AuthContext';
+import { userService } from '../services/UserService';
 
 export const Register = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    password: '',
-    icon: '👤'
-  });
 
   const handleRegister = async () => {
-    if (!form.name || !form.email || !form.password) {
-      Alert.alert("Error", "Todos los campos son obligatorios.");
-      return;
-    }
-
+    if (!email || !password || !name) return Alert.alert("Error", "Completa los campos");
+    setLoading(true);
     try {
-      await login(form);
-
-      Alert.alert("¡Cuenta creada!", "Bienvenido a MyStore", [
-        { text: "Comenzar", onPress: () => navigation.replace('ProductCatalog') }
-      ]);
+      const newUser = { email, name, password, emoji: '👤' };
+      const success = await userService.registerUser(newUser);
+      if (success) {
+        await login(newUser);
+      } else {
+        Alert.alert("Error", "Ese correo ya existe");
+      }
     } catch (e) {
-      Alert.alert("Error", "No se pudieron guardar los datos.");
+      Alert.alert("Error", "Fallo al registrar");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Crea tu cuenta</Text>
-
-      <IconSelector
-        selectedIcon={form.icon}
-        onSelect={(icon) => setForm({ ...form, icon })}
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="Nombre completo"
-        onChangeText={(val) => setForm({ ...form, name: val })}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Correo electrónico"
-        autoCapitalize="none"
-        onChangeText={(val) => setForm({ ...form, email: val })}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Contraseña"
-        secureTextEntry
-        onChangeText={(val) => setForm({ ...form, password: val })}
-      />
-
-      <TouchableOpacity style={styles.button} onPress={handleRegister}>
-        <Text style={styles.buttonText}>Registrarse ahora</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Crear cuenta</Text>
+      <Text style={styles.label}>Tu nombre</Text>
+      <TextInput style={styles.input} value={name} onChangeText={setName} />
+      <Text style={styles.label}>Email</Text>
+      <TextInput style={styles.input} value={email} onChangeText={setEmail} autoCapitalize="none" keyboardType="email-address" />
+      <Text style={styles.label}>Contraseña</Text>
+      <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry placeholder="Mínimo 6 caracteres" />
+      <TouchableOpacity style={styles.btn} onPress={handleRegister}>
+        {loading ? <ActivityIndicator color="#000" /> : <Text style={styles.btnText}>Continuar</Text>}
       </TouchableOpacity>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 30, backgroundColor: '#FFF', flexGrow: 1, justifyContent: 'center' },
-  title: { fontSize: 28, fontWeight: 'bold', color: '#2C3E50', marginBottom: 30 },
-  input: { backgroundColor: '#F4F7F6', padding: 15, borderRadius: 12, marginBottom: 15 },
-  button: { backgroundColor: '#2C3E50', padding: 18, borderRadius: 12, alignItems: 'center', marginTop: 20 },
-  buttonText: { color: '#FFF', fontWeight: 'bold', fontSize: 16 }
+  container: { flex: 1, backgroundColor: '#FFF', padding: 20 },
+  title: { fontSize: 28, fontWeight: 'bold', marginBottom: 20 },
+  label: { fontWeight: 'bold', marginBottom: 5 },
+  input: { borderWidth: 1, borderColor: '#DDD', padding: 12, borderRadius: 5, marginBottom: 15 },
+  btn: { backgroundColor: '#F0C14B', padding: 15, borderRadius: 5, alignItems: 'center', borderWidth: 1, borderColor: '#A88734' },
+  btnText: { fontWeight: 'bold' }
 });

@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
     ratingText: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#F1C40F', // Color dorado/amarillo para la estrella
+        color: '#F1C40F', 
         marginRight: 4,
     },
     countText: {
         fontSize: 12,
-        color: '#7F8C8D', // Gris suave para el número de reseñas
+        color: '#7F8C8D', 
     },
     price: {
         fontSize: 16,

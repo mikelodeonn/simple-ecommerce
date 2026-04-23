@@ -7,7 +7,6 @@ const LOCAL_PRODUCTS_KEY = '@local_products';
 
 const INITIAL_LOCAL_PRODUCTS = [
 
-  // --- ELECTRONICS (5) ---
   {
     id: 'elec_1',
     title: 'Mechanical Keyboard RGB',
@@ -64,7 +63,6 @@ const INITIAL_LOCAL_PRODUCTS = [
     rating: { rate: 4.4, count: 90 }
   },
 
-  // --- JEWELERY (5) ---
   {
     id: 'jewel_1',
     title: 'Silver Chain Bracelet',
@@ -121,7 +119,6 @@ const INITIAL_LOCAL_PRODUCTS = [
     rating: { rate: 4.5, count: 50 }
   },
 
-  // --- MEN'S CLOTHING (5) ---
   {
     id: 'men_1',
     title: 'Casual Denim Jacket',
@@ -178,7 +175,6 @@ const INITIAL_LOCAL_PRODUCTS = [
     rating: { rate: 4.4, count: 80 }
   },
 
-  // --- WOMEN'S CLOTHING (5) ---
   {
     id: 'women_1',
     title: 'Floral Summer Dress',
@@ -242,13 +238,10 @@ export const productsService = {
     try {
       const apiRaw = await apiClient.get('/products');
       const apiProducts = apiRaw.map(item => formatProduct(item, 'api'));
-// --- CAMBIO TEMPORAL PARA FORZAR RESET ---
-      // Forzamos que localRaw sea siempre lo que tienes en el código
+
       const localRaw = INITIAL_LOCAL_PRODUCTS; 
       
-      // Guardamos encima de lo que haya en el storage para "actualizarlo"
       await storageService.save(LOCAL_PRODUCTS_KEY, INITIAL_LOCAL_PRODUCTS);
-      // -----------------------------------------
       const localProducts = localRaw.map(item => formatProduct(item, 'local'));
 
       return [...localProducts, ...apiProducts];

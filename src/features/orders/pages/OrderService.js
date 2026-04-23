@@ -1,29 +1,22 @@
 import { storageService } from '../../../shared/services/storageService';
 
-const ORDERS_KEY = '@my_orders';
-
 export const ordersService = {
-  // Guarda el pedido nuevo junto con los anteriores
-  saveOrder: async (order) => {
-    try {
-      const existingOrders = await storageService.get(ORDERS_KEY) || [];
-      const updatedOrders = [order, ...existingOrders];
-      await storageService.save(ORDERS_KEY, updatedOrders);
-      return updatedOrders;
-    } catch (error) {
-      console.error("Error al guardar pedido:", error);
-      throw error;
-    }
+  saveOrder: async (order, userEmail) => {
+    const key = `@orders_${userEmail}`;
+    const existing = await storageService.get(key) || [];
+    const updated = [order, ...existing];
+    await storageService.save(key, updated);
+    return updated;
   },
-  
-  // Recupera la lista de pedidos
-  getOrders: async () => {
-    try {
-      const orders = await storageService.get(ORDERS_KEY);
-      return orders || [];
-    } catch (error) {
-      console.error("Error al obtener pedidos:", error);
-      return [];
-    }
+  getOrders: async (userEmail) => {
+    const key = `@orders_${userEmail}`;
+    return await storageService.get(key) || [];
+  },
+  deleteOrder: async (orderId, userEmail) => {
+    const key = `@orders_${userEmail}`;
+    const existing = await storageService.get(key) || [];
+    const updated = existing.filter(o => o.id !== orderId);
+    await storageService.save(key, updated);
+    return updated;
   }
 };
