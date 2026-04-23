@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 // ... otros imports
 import { useCart } from '../../../context/CartContext';
-// CORRECCIÓN: Ajustamos a 'OrderService' con O mayúscula
 import { ordersService } from '../../orders/pages/OrderService';
 
 export const Checkout = ({ navigation }) => {
-  // ... resto del código del handleFinish igual
   const { cart, getTotal, clearCart } = useCart();
   const [address, setAddress] = useState('');
 
