@@ -74,33 +74,70 @@ export const Register = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#FFF' },
-  scrollContent: { paddingHorizontal: 25, paddingTop: 30 },
-  title: { fontSize: 26, fontWeight: 'bold', marginBottom: 25, color: '#111' },
-  form: { width: '100%' },
-  label: { fontWeight: 'bold', marginBottom: 6, fontSize: 14, color: '#111' },
+  container: { 
+    flex: 1, 
+    backgroundColor: '#FFFFFF' 
+  },
+  scrollContent: { 
+    paddingHorizontal: 30, 
+    paddingTop: 50,
+    paddingBottom: 40 
+  },
+  title: { 
+    fontSize: 30, 
+    fontWeight: '800', 
+    marginBottom: 10, 
+    color: '#1A1A1A',
+    letterSpacing: -0.8 
+  },
+  subtitle: { 
+    fontSize: 15,
+    color: '#636E72',
+    marginBottom: 35
+  },
+  form: { 
+    width: '100%' 
+  },
+  label: { 
+    fontWeight: '600', 
+    marginBottom: 8, 
+    fontSize: 13, 
+    color: '#2D3436',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5
+  },
   input: { 
+    backgroundColor: '#F8F9FA', 
     borderWidth: 1, 
-    borderColor: '#BBB', 
-    padding: 12, 
-    borderRadius: 4, 
-    marginBottom: 20, 
-    fontSize: 16 
+    borderColor: '#E9ECEF', 
+    padding: 16, 
+    borderRadius: 14, 
+    marginBottom: 22, 
+    fontSize: 16,
+    color: '#2D3436'
   },
   registerBtn: { 
-    backgroundColor: '#F0C14B', 
-    padding: 14, 
-    borderRadius: 4, 
+    backgroundColor: '#1A1A1A', 
+    padding: 18, 
+    borderRadius: 14, 
     alignItems: 'center', 
-    borderWidth: 1, 
-    borderColor: '#A88734',
-    marginTop: 10
+    marginTop: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 4
   },
-  registerBtnText: { fontSize: 16, color: '#111' },
+  registerBtnText: { 
+    fontSize: 17, 
+    color: '#FFF', 
+    fontWeight: '700' 
+  },
   disclaimer: { 
-    marginTop: 20, 
-    fontSize: 12, 
-    color: '#555', 
-    lineHeight: 18 
+    marginTop: 25, 
+    fontSize: 13, 
+    color: '#A0AEC0', 
+    lineHeight: 20,
+    textAlign: 'center' 
   }
 });
