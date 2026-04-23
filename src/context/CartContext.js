@@ -1,21 +1,32 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import {storageService} from '../shared/services/storageService';
+import { storageService } from '../shared/services/storageService';
+import { useAuth } from './AuthContext'; 
+
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const { user } = useAuth();
+
+  const CART_KEY = user ? `@cart_${user.email}` : null;
 
   useEffect(() => {
     const loadCart = async () => {
-      const savedCart = await storageService.get('@cart');
-      if (savedCart) setCart(savedCart);
+      if (CART_KEY) {
+        const savedCart = await storageService.get(CART_KEY);
+        setCart(savedCart || []);
+      } else {
+        setCart([]); 
+      }
     };
     loadCart();
-  }, []);
+  }, [CART_KEY]);
 
   useEffect(() => {
-    storageService.save('@cart', cart);
-  }, [cart]);
+    if (CART_KEY) {
+      storageService.save(CART_KEY, cart);
+    }
+  }, [cart, CART_KEY]);
 
   const addToCart = (product) => {
     setCart(prev => {
