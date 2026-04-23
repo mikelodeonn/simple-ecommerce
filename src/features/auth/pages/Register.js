@@ -12,6 +12,10 @@ export const Register = ({ navigation }) => {
 
   const handleRegister = async () => {
     if (!email || !password || !name) return Alert.alert("Error", "Please fill in all fields");
+    
+    const isPasswordValid = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(password);
+    if (!isPasswordValid) return Alert.alert("Weak Password", "Must be at least 6 characters long and include a letter and a number.");
+    
     setLoading(true);
     try {
       const newUser = { email, name, password, emoji: '👤' };

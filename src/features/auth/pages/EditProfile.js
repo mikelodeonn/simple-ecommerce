@@ -21,25 +21,25 @@ export const EditProfile = ({ navigation }) => {
 
   const handleUpdate = async () => {
     if (!name || !email || !password) {
-      return Alert.alert("Error", "Todos los campos son obligatorios");
+      return Alert.alert("Error", "All fields are required");
     }
     try {
       await updateUser({ ...user, name, email, emoji, password });
-      Alert.alert("Éxito", "Información actualizada");
+      Alert.alert("Success", "Information updated");
       navigation.goBack();
     } catch (e) {
-      Alert.alert("Error", "No se pudo actualizar la información");
+      Alert.alert("Error", "The information could not be updated");
     }
   };
 
   const confirmDelete = () => {
     Alert.alert(
-      "Eliminar Cuenta",
-      "¿Estás seguro de eliminar tu cuenta? Se borrarán tus pedidos y carrito de este dispositivo.",
+      "Delete account",
+      "Are you sure you want to delete your accounut? Your shopping cart and orders will be deleted",
       [
-        { text: "Cancelar", style: "cancel" },
+        { text: "Cancel", style: "cancel" },
         { 
-          text: "Eliminar definitivamente", 
+          text: "Delete permanently", 
           style: "destructive", 
           onPress: async () => {
             await deleteAccount();
@@ -61,14 +61,14 @@ export const EditProfile = ({ navigation }) => {
             placeholder="Ej: 🦁" 
           />
 
-          <Text style={styles.label}>Nombre completo</Text>
+          <Text style={styles.label}>Full name</Text>
           <TextInput 
             style={styles.input} 
             value={name} 
             onChangeText={setName} 
           />
 
-          <Text style={styles.label}>Correo electrónico</Text>
+          <Text style={styles.label}>E mail</Text>
           <TextInput 
             style={styles.input} 
             value={email} 
@@ -77,7 +77,7 @@ export const EditProfile = ({ navigation }) => {
             autoCapitalize="none" 
           />
 
-          <Text style={styles.label}>Contraseña</Text>
+          <Text style={styles.label}>Password</Text>
           <TextInput 
             style={styles.input} 
             value={password} 
@@ -86,13 +86,13 @@ export const EditProfile = ({ navigation }) => {
           />
 
           <TouchableOpacity style={styles.saveBtn} onPress={handleUpdate}>
-            <Text style={styles.saveText}>Guardar Cambios</Text>
+            <Text style={styles.saveText}>Save changes</Text>
           </TouchableOpacity>
 
           <View style={styles.divider} />
 
           <TouchableOpacity style={styles.deleteBtn} onPress={confirmDelete}>
-            <Text style={styles.deleteText}>Eliminar mi cuenta</Text>
+            <Text style={styles.deleteText}>Delete my account</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

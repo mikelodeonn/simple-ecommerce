@@ -29,25 +29,26 @@ export const Login = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
+        <Text style={styles.appName}>AMAZING APP</Text>
         <Text style={styles.title}>Sign-In</Text>
-        
+
         <View style={styles.form}>
           <Text style={styles.label}>Email</Text>
-          <TextInput 
-            style={styles.input} 
-            value={email} 
-            onChangeText={setEmail} 
-            autoCapitalize="none" 
-            keyboardType="email-address" 
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+            autoCapitalize="none"
+            keyboardType="email-address"
             placeholder="example@email.com"
           />
 
           <Text style={styles.label}>Password</Text>
-          <TextInput 
-            style={styles.input} 
-            value={password} 
-            onChangeText={setPassword} 
-            secureTextEntry 
+          <TextInput
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
           />
 
           <TouchableOpacity style={styles.loginBtn} onPress={handleLogin} disabled={loading}>
@@ -57,15 +58,15 @@ export const Login = ({ navigation }) => {
 
         <View style={styles.dividerContainer}>
           <View style={styles.line} />
-          <Text style={styles.dividerText}>New to Amazon?</Text>
+          <Text style={styles.dividerText}>New to Amazing App?</Text>
           <View style={styles.line} />
         </View>
 
-        <TouchableOpacity 
-          style={styles.createAccountBtn} 
+        <TouchableOpacity
+          style={styles.createAccountBtn}
           onPress={() => navigation.navigate('Register')}
         >
-          <Text style={styles.createAccountBtnText}>Create your Amazon account</Text>
+          <Text style={styles.createAccountBtnText}>Create your Amazing App account</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -73,54 +74,62 @@ export const Login = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    backgroundColor: '#FFFFFF' 
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF'
   },
-  content: { 
-    paddingHorizontal: 32, 
-    paddingTop: 80, 
+  content: {
+    paddingHorizontal: 32,
+    paddingTop: 40, 
     justifyContent: 'flex-start'
   },
-  title: { 
-    fontSize: 34, 
-    fontWeight: '900', 
-    marginBottom: 8, 
-    color: '#121212',
-    letterSpacing: -1.2 
+  appName: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: '#1A1A1A',
+    textAlign: 'center',
+    marginBottom: 40,
+    letterSpacing: 3, 
   },
-  subtitle: { 
+  title: {
+    fontSize: 34,
+    fontWeight: '900',
+    marginBottom: 8,
+    color: '#121212',
+    letterSpacing: -1.2
+  },
+  subtitle: {
     fontSize: 16,
-    color: '#cfcfd4', 
+    color: '#cfcfd4',
     marginBottom: 40,
     lineHeight: 22
   },
-  form: { 
-    marginBottom: 15 
+  form: {
+    marginBottom: 15
   },
-  label: { 
-    fontWeight: '700', 
-    marginBottom: 10, 
-    fontSize: 13, 
+  label: {
+    fontWeight: '700',
+    marginBottom: 10,
+    fontSize: 13,
     color: '#1C1C1E',
-    textTransform: 'uppercase', 
+    textTransform: 'uppercase',
     letterSpacing: 0.8
   },
-  input: { 
-    backgroundColor: '#F2F2F7', 
-    borderWidth: 1, 
-    borderColor: '#E5E5EA', 
-    padding: 18, 
-    borderRadius: 16, 
-    marginBottom: 24, 
+  input: {
+    backgroundColor: '#F2F2F7',
+    borderWidth: 1,
+    borderColor: '#E5E5EA',
+    padding: 18,
+    borderRadius: 16,
+    marginBottom: 24,
     fontSize: 16,
     color: '#000',
   },
-  loginBtn: { 
-    backgroundColor: '#1A1A1A', 
-    paddingVertical: 18, 
-    borderRadius: 16, 
-    alignItems: 'center', 
+  loginBtn: {
+    backgroundColor: '#1A1A1A',
+    paddingVertical: 18,
+    borderRadius: 16,
+    alignItems: 'center',
     marginTop: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 10 },
@@ -128,38 +137,38 @@ const styles = StyleSheet.create({
     shadowRadius: 15,
     elevation: 8
   },
-  loginBtnText: { 
-    fontSize: 18, 
-    fontWeight: '700', 
+  loginBtnText: {
+    fontSize: 18,
+    fontWeight: '700',
     color: '#FFF',
     letterSpacing: 0.5
   },
-  dividerContainer: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    marginVertical: 45 
+  dividerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 45
   },
-  line: { 
-    flex: 1, 
-    height: 1, 
-    backgroundColor: '#E5E5EA' 
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#E5E5EA'
   },
-  dividerText: { 
-    marginHorizontal: 15, 
-    color: '#8E8E93', 
+  dividerText: {
+    marginHorizontal: 15,
+    color: '#8E8E93',
     fontSize: 13,
     fontWeight: '600'
   },
-  createAccountBtn: { 
-    padding: 18, 
-    borderRadius: 16, 
-    alignItems: 'center', 
-    borderWidth: 2, 
-    borderColor: '#1A1A1A' 
+  createAccountBtn: {
+    padding: 18,
+    borderRadius: 16,
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#1A1A1A'
   },
-  createAccountBtnText: { 
-    color: '#1A1A1A', 
-    fontSize: 16, 
-    fontWeight: '700' 
+  createAccountBtnText: {
+    color: '#1A1A1A',
+    fontSize: 16,
+    fontWeight: '700'
   }
 });

@@ -19,18 +19,18 @@ export const Profile = ({ navigation }) => {
             style={styles.amazonBtn} 
             onPress={() => navigation.navigate('EditProfile')}
           >
-            <Text style={styles.btnText}>Editar Información / Eliminar Cuenta</Text>
+            <Text style={styles.btnText}>Edit information / Delete account</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
             style={styles.amazonBtn} 
             onPress={() => navigation.navigate('OrderHistory')}
           >
-            <Text style={styles.btnText}>Mis Pedidos</Text>
+            <Text style={styles.btnText}>My orders</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.logoutBtn} onPress={logout}>
-            <Text style={styles.logoutText}>Cerrar Sesión</Text>
+            <Text style={styles.logoutText}>Log out</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
