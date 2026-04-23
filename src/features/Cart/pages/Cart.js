@@ -27,7 +27,7 @@ export const Cart = ({ navigation }) => {
         data={cart} 
         renderItem={renderItem} 
         keyExtractor={item => item.id.toString()}
-        ListEmptyComponent={<Text style={styles.empty}>Carrito vacío</Text>}
+        ListEmptyComponent={<Text style={styles.empty}>empty cart</Text>}
       />
       <View style={styles.footer}>
         <Text style={styles.total}>Total: ${getTotal().toFixed(2)}</Text>
@@ -35,7 +35,7 @@ export const Cart = ({ navigation }) => {
           style={styles.mainBtn} 
           onPress={() => cart.length > 0 ? navigation.navigate('Checkout') : Alert.alert("Aviso", "Agrega algo al carrito")}
         >
-          <Text style={styles.btnText}>Continuar compra</Text>
+          <Text style={styles.btnText}>continue shopping</Text>
         </TouchableOpacity>
       </View>
     </View>

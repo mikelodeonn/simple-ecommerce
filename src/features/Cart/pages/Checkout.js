@@ -8,52 +8,82 @@ export const Checkout = ({ navigation }) => {
   const { cart, getTotal, clearCart } = useCart();
   const { user } = useAuth();
   const [address, setAddress] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleFinish = async () => {
-    if (!address.trim()) return Alert.alert("Error", "Ingresa una dirección");
+    if (cart.length === 0) return Alert.alert("Error", "Your cart is empty");
+    if (!address.trim()) return Alert.alert("Error", "Please enter a mailing address");
+
+    setIsProcessing(true); 
 
     try {
+      const orderTotal = getTotal();
+      
       const order = {
         id: Date.now().toString(),
-        items: cart,
-        total: getTotal(),
-        address: address,
+        items: cart, 
+        total: orderTotal,
+        address: address.trim(),
         date: new Date().toLocaleDateString(),
       };
 
       await ordersService.saveOrder(order, user.email);
-      clearCart();
       
-      Alert.alert("Éxito", "Pedido realizado", [
-        { text: "OK", onPress: () => navigation.navigate('Main', { screen: 'CatalogTab' }) }
-      ]);
+      await clearCart();
+      
+      Alert.alert(
+        "Order Placed", 
+        "Your purchase was successful!", 
+        [
+          { 
+            text: "OK", 
+            onPress: () => {
+              navigation.reset({
+                index: 0,
+                routes: [{ name: 'Main' }],
+              });
+            } 
+          }
+        ]
+      );
     } catch (e) {
-      Alert.alert("Error", "No se pudo procesar");
+      console.error(e);
+      Alert.alert("Error", "Could not complete the order. Please try again.");
+    } finally {
+      setIsProcessing(false);
     }
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
       <View style={styles.card}>
-        <Text style={styles.totalLabel}>Total del pedido:</Text>
+        <Text style={styles.totalLabel}>Order total:</Text>
         <Text style={styles.totalValue}>${getTotal().toFixed(2)}</Text>
       </View>
 
-      <Text style={styles.label}>Dirección de envío:</Text>
+      <Text style={styles.label}>Mailing address:</Text>
       <TextInput 
         style={styles.input} 
         value={address} 
         onChangeText={setAddress} 
-        placeholder="Calle, número, colonia..."
+        placeholder="Street, number, colony..."
         multiline
+        numberOfLines={4}
       />
 
-      <TouchableOpacity style={styles.btn} onPress={handleFinish}>
-        <Text style={styles.btnText}>Confirmar y pagar</Text>
+      <TouchableOpacity 
+        style={[styles.btn, isProcessing && { backgroundColor: '#bdc3c7' }]} 
+        onPress={handleFinish}
+        disabled={isProcessing}
+      >
+        <Text style={styles.btnText}>
+          {isProcessing ? "Processing..." : "Confirm and pay"}
+        </Text>
       </TouchableOpacity>
     </ScrollView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: { 

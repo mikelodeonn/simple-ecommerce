@@ -50,7 +50,6 @@ export const AppNavigator = () => {
         {!user ? (
           <>
             <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-            {/* NOMBRE CLAVE: "Register" para que el botón funcione */}
             <Stack.Screen name="Register" component={Register} options={{ title: 'Crear Cuenta' }} />
           </>
         ) : (

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, Alert, SafeAreaView } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { ordersService } from './OrderService';
 import { useAuth } from '../../../context/AuthContext';
@@ -26,9 +26,9 @@ export const OrderHistory = () => {
   useFocusEffect(useCallback(() => { fetchOrders(); }, []));
 
   const handleDelete = (id) => {
-    Alert.alert("Eliminar", "¿Borrar este registro?", [
-      { text: "No" },
-      { text: "Sí", onPress: async () => {
+    Alert.alert("Delete Order", "Do you want to remove this record?", [
+      { text: "Cancel", style: "cancel" },
+      { text: "Remove", style: "destructive", onPress: async () => {
           const updated = await ordersService.deleteOrder(id, user.email);
           setOrders(updated);
       }}
@@ -37,91 +37,89 @@ export const OrderHistory = () => {
 
   if (loading) return <View style={styles.center}><ActivityIndicator size="large" color="#FF9900" /></View>;
 
-  if (error) return (
-    <View style={styles.center}>
-      <Text>Error de conexión</Text>
-      <TouchableOpacity onPress={fetchOrders}><Text style={{color: '#007185'}}>Reintentar</Text></TouchableOpacity>
-    </View>
-  );
-
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <FlatList 
         data={orders}
         keyExtractor={item => item.id}
-        contentContainerStyle={{ padding: 15 }}
+        contentContainerStyle={styles.listContent}
         renderItem={({ item, index }) => (
           <View style={styles.card}>
-            <Text style={styles.orderLabel}>Compra #{orders.length - index}</Text>
-            <Text style={styles.date}>{item.date}</Text>
-            <Text style={styles.total}>${item.total.toFixed(2)}</Text>
-            <TouchableOpacity onPress={() => handleDelete(item.id)}>
-              <Text style={styles.delete}>Borrar registro</Text>
-            </TouchableOpacity>
+            <View style={styles.header}>
+              <Text style={styles.orderNumber}>Order #{orders.length - index}</Text>
+              <Text style={styles.date}>{item.date}</Text>
+            </View>
+
+            <View style={styles.itemsSection}>
+              <Text style={styles.sectionTitle}>Items Details:</Text>
+              {item.items && item.items.map((prod, idx) => (
+                <View key={idx} style={styles.productRow}>
+                  <Text style={styles.productName}>• {prod.name || prod.title}</Text>
+                  <Text style={styles.productQty}>Qty: {prod.quantity || 1}</Text>
+                </View>
+              ))}
+            </View>
+
+            <View style={styles.footer}>
+              <TouchableOpacity onPress={() => handleDelete(item.id)}>
+                <Text style={styles.removeText}>Remove</Text>
+              </TouchableOpacity>
+              <Text style={styles.totalText}>Total: ${parseFloat(item.total).toFixed(2)}</Text>
+            </View>
           </View>
         )}
-        ListEmptyComponent={<Text style={styles.empty}>Historial vacío</Text>}
+        ListEmptyComponent={
+          <View style={styles.center}>
+            <Text style={styles.emptyText}>No orders found.</Text>
+          </View>
+        }
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    backgroundColor: '#F8F9FA' 
-  },
-  center: { 
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center',
-    padding: 20
-  },
+  container: { flex: 1, backgroundColor: '#F3F3F3' },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 },
+  listContent: { paddingVertical: 10 },
   card: { 
-    backgroundColor: '#FFFFFF', 
-    padding: 20, 
-    marginHorizontal: 16,
-    marginVertical: 8,
-    borderRadius: 16, 
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 3,
-    borderLeftWidth: 5, 
-    borderLeftColor: '#007AFF' 
+    backgroundColor: '#FFF', 
+    marginHorizontal: 15, 
+    marginVertical: 8, 
+    padding: 15, 
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#DDD',
+    elevation: 2
   },
-  orderLabel: { 
-    fontWeight: '700', 
-    fontSize: 17,
-    color: '#1A1A1A',
-    marginBottom: 4
+  header: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    borderBottomWidth: 1, 
+    borderBottomColor: '#EEE', 
+    paddingBottom: 10,
+    marginBottom: 10
   },
-  date: { 
-    color: '#95A5A6', 
-    fontSize: 14,
-    fontWeight: '500'
+  orderNumber: { fontWeight: 'bold', fontSize: 16, color: '#232F3E' },
+  date: { color: '#565959', fontSize: 13 },
+  itemsSection: { marginBottom: 15 },
+  sectionTitle: { fontSize: 14, fontWeight: 'bold', color: '#565959', marginBottom: 5 },
+  productRow: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    paddingVertical: 3 
   },
-  total: { 
-    fontWeight: '800', 
-    color: '#2D3436', 
-    fontSize: 20,
-    marginTop: 10,
-    textAlign: 'right'
+  productName: { fontSize: 14, color: '#0F1111', flex: 2 },
+  productQty: { fontSize: 14, color: '#565959', flex: 1, textAlign: 'right' },
+  footer: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#EEE',
+    paddingTop: 10
   },
-  delete: { 
-    color: '#FF4757', 
-    marginTop: 12,
-    fontWeight: '600',
-    fontSize: 14,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5
-  },
-  empty: { 
-    textAlign: 'center', 
-    marginTop: 100, 
-    color: '#B2BEC3',
-    fontSize: 16,
-    fontWeight: '500'
-  }
+  removeText: { color: '#007185', fontWeight: '500' },
+  totalText: { fontSize: 18, fontWeight: 'bold', color: '#B12704' },
+  emptyText: { color: '#565959', fontSize: 16 }
 });
