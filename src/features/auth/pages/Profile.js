@@ -41,7 +41,8 @@ export const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#F8F9FA' 
+    backgroundColor: '#F8F9FA',
+    marginTop: 30
   },
   scroll: { 
     padding: 20 

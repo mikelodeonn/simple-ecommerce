@@ -54,7 +54,8 @@ export const ProductCatalog = () => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#F8F9FA' 
+    backgroundColor: '#F8F9FA', 
+    marginTop: 20
   },
   center: { 
     flex: 1, 

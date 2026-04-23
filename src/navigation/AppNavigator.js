@@ -19,21 +19,28 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const MainTabs = () => (
-  <Tab.Navigator 
+  <Tab.Navigator
     screenOptions={({ route }) => ({
       headerStyle: { backgroundColor: '#232F3E' },
       headerTintColor: '#FFFFFF',
       tabBarActiveTintColor: '#FF9900',
       tabBarInactiveTintColor: 'gray',
-      tabBarIcon: ({ color, size }) => {
-        let iconName = route.name === 'CatalogTab' ? 'home' : route.name === 'CartTab' ? 'cart' : 'person';
+      tabBarIcon: ({ color, size, focused }) => {
+        // Mapeo de iconos para mayor claridad
+        const iconMap = {
+          Catalog: focused ? 'home' : 'home-outline',
+          Cart: focused ? 'cart' : 'cart-outline',
+          Profile: focused ? 'person' : 'person-outline',
+        };
+
+        const iconName = iconMap[route.name] || 'help-circle';
         return <Ionicons name={iconName} size={size} color={color} />;
       },
     })}
   >
-    <Tab.Screen name="CatalogTab" component={ProductCatalog} options={{ title: 'Amazon' }} />
-    <Tab.Screen name="CartTab" component={Cart} options={{ title: 'Carrito' }} />
-    <Tab.Screen name="ProfileTab" component={Profile} options={{ title: 'Mi Cuenta' }} />
+    <Tab.Screen name="Catalog" component={ProductCatalog} options={{ headerShown: false }} />
+    <Tab.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
+    <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
   </Tab.Navigator>
 );
 
@@ -43,22 +50,22 @@ export const AppNavigator = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ 
+      <Stack.Navigator screenOptions={{
         headerStyle: { backgroundColor: '#232F3E' },
-        headerTintColor: '#FFFFFF' 
+        headerTintColor: '#FFFFFF'
       }}>
         {!user ? (
           <>
             <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-            <Stack.Screen name="Register" component={Register} options={{ title: 'Crear Cuenta' }} />
+            <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
           </>
         ) : (
           <>
             <Stack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
-            <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ title: 'Detalles' }} />
-            <Stack.Screen name="Checkout" component={Checkout} options={{ title: 'Caja' }} />
-            <Stack.Screen name="OrderHistory" component={OrderHistory} options={{ title: 'Mis Pedidos' }} />
-            <Stack.Screen name="EditProfile" component={EditProfile} options={{ title: 'Configuración' }} />
+            <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
+            <Stack.Screen name="Checkout" component={Checkout} options={{ headerShown: false }} />
+            <Stack.Screen name="OrderHistory" component={OrderHistory} options={{ headerShown: false }} />
+            <Stack.Screen name="EditProfile" component={EditProfile} options={{ headerShown: false }} />
           </>
         )}
       </Stack.Navigator>

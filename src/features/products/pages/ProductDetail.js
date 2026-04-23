@@ -53,7 +53,9 @@ export const ProductDetail = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#FFFFFF' 
+    backgroundColor: '#FFFFFF',
+    marginTop: 30
+    
   },
   image: { 
     width: '100%', 

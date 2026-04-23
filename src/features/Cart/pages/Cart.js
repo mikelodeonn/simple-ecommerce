@@ -15,7 +15,7 @@ export const Cart = ({ navigation }) => {
           <TouchableOpacity onPress={() => updateQuantity(item.id, -1)} style={styles.qtyBtn}><Text>-</Text></TouchableOpacity>
           <Text style={styles.qtyText}>{item.quantity}</Text>
           <TouchableOpacity onPress={() => updateQuantity(item.id, 1)} style={styles.qtyBtn}><Text>+</Text></TouchableOpacity>
-          <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.delete}><Text style={{color: '#E74C3C'}}>Quitar</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.delete}><Text style={{color: '#E74C3C'}}>Remove</Text></TouchableOpacity>
         </View>
       </View>
     </View>
@@ -33,9 +33,9 @@ export const Cart = ({ navigation }) => {
         <Text style={styles.total}>Total: ${getTotal().toFixed(2)}</Text>
         <TouchableOpacity 
           style={styles.mainBtn} 
-          onPress={() => cart.length > 0 ? navigation.navigate('Checkout') : Alert.alert("Aviso", "Agrega algo al carrito")}
+          onPress={() => cart.length > 0 ? navigation.navigate('Checkout') : Alert.alert("Note", "Add something to your cart")}
         >
-          <Text style={styles.btnText}>continue shopping</Text>
+          <Text style={styles.btnText}>Continue shopping</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -45,7 +45,8 @@ export const Cart = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#F1F3F5' 
+    backgroundColor: '#F1F3F5', 
+    marginTop: 30
   },
   card: { 
     flexDirection: 'row', 

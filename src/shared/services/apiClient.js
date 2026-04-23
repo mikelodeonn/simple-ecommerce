@@ -1,4 +1,4 @@
-const BASE_URL = 'https://faketoreapi.com';
+const BASE_URL = 'https://fakestoreapi.com';
 
 export const apiClient = {
   get: async (endpoint) => {

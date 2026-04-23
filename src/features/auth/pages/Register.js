@@ -69,7 +69,7 @@ export const Register = ({ navigation }) => {
           </TouchableOpacity>
 
           <Text style={styles.disclaimer}>
-            By creating an account, you agree to Amazon's Conditions of Use and Privacy Notice.
+            By creating an account, you agree to Amazing App's Conditions of Use and Privacy Notice.
           </Text>
         </View>
       </ScrollView>
