@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-// ... otros imports
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  StyleSheet, 
+  Alert, 
+  ScrollView 
+} from 'react-native';
 import { useCart } from '../../../context/CartContext';
 import { ordersService } from '../../orders/pages/OrderService';
 
@@ -8,7 +16,9 @@ export const Checkout = ({ navigation }) => {
   const [address, setAddress] = useState('');
 
   const handleFinish = async () => {
-    if (!address.trim()) return Alert.alert("Error", "La dirección es obligatoria");
+    if (!address.trim()) {
+      return Alert.alert("Error", "La dirección es obligatoria");
+    }
 
     try {
       const order = {
@@ -21,8 +31,15 @@ export const Checkout = ({ navigation }) => {
 
       await ordersService.saveOrder(order);
       clearCart();
+      
       Alert.alert("¡Éxito!", "Gracias por tu compra", [
-        { text: "OK", onPress: () => navigation.popToTop() }
+        { 
+          text: "OK", 
+          onPress: () => {
+           
+            navigation.navigate('Main', { screen: 'CartTab' });
+          } 
+        }
       ]);
     } catch (error) {
       Alert.alert("Error", "No se pudo procesar la compra");
@@ -32,18 +49,25 @@ export const Checkout = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Detalles de Envío</Text>
+      
       <View style={styles.summaryCard}>
         <Text style={styles.summaryLabel}>Total a pagar:</Text>
         <Text style={styles.summaryValue}>${getTotal().toFixed(2)}</Text>
       </View>
+
       <TextInput 
         style={styles.input} 
         placeholder="Dirección completa de entrega" 
         multiline
         numberOfLines={3}
+        value={address}
         onChangeText={setAddress}
       />
-      <TouchableOpacity style={styles.confirmBtn} onPress={handleFinish}>
+
+      <TouchableOpacity 
+        style={styles.confirmBtn} 
+        onPress={handleFinish}
+      >
         <Text style={styles.confirmBtnText}>Confirmar y Pagar</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -56,7 +80,14 @@ const styles = StyleSheet.create({
   summaryCard: { padding: 20, backgroundColor: '#F4F7F6', borderRadius: 15, marginBottom: 20 },
   summaryLabel: { color: '#7F8C8D', fontSize: 14 },
   summaryValue: { fontSize: 26, fontWeight: 'bold', color: '#2C3E50' },
-  input: { backgroundColor: '#F4F7F6', padding: 15, borderRadius: 12, fontSize: 16, textAlignVertical: 'top' },
+  input: { 
+    backgroundColor: '#F4F7F6', 
+    padding: 15, 
+    borderRadius: 12, 
+    fontSize: 16, 
+    textAlignVertical: 'top',
+    minHeight: 80
+  },
   confirmBtn: { backgroundColor: '#27AE60', padding: 18, borderRadius: 12, marginTop: 30, alignItems: 'center' },
   confirmBtnText: { color: '#FFF', fontWeight: 'bold', fontSize: 16 }
 });

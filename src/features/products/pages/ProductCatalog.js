@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: 'bold',
   },
-  // --- ESTILOS PARA LA LISTA DE PRODUCTOS ---
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   listContent: {
     paddingHorizontal: 8,
