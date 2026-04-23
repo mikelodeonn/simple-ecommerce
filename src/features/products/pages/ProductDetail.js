@@ -39,6 +39,7 @@ export const ProductDetail = ({ route, navigation }) => {
           <Text style={styles.title}>{product.title}</Text>
           <Text style={styles.price}>${product.price.toFixed(2)}</Text>
           <Text style={styles.description}>{product.description}</Text>
+           <Text style={styles.description}> Seller: {product.seller}</Text>
           
           <TouchableOpacity style={styles.button} onPress={handleAddToCart}>
             <Text style={styles.buttonText}>Agregar al carrito</Text>

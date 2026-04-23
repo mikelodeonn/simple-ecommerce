@@ -235,19 +235,23 @@ const INITIAL_LOCAL_PRODUCTS = [
 
 export const productsService = {
   getProducts: async () => {
+
+    const localProducts = INITIAL_LOCAL_PRODUCTS.map (item => formatProduct(item, 'local'));
+
     try {
       const apiRaw = await apiClient.get('/products');
       const apiProducts = apiRaw.map(item => formatProduct(item, 'api'));
 
-      const localRaw = INITIAL_LOCAL_PRODUCTS; 
+     
       
       await storageService.save(LOCAL_PRODUCTS_KEY, INITIAL_LOCAL_PRODUCTS);
-      const localProducts = localRaw.map(item => formatProduct(item, 'local'));
-
+      return [...localProducts, ...apiProducts]
       return [...localProducts, ...apiProducts];
+
     } catch (error) {
-      console.error("Error unifying products:", error);
-      return [];
+     
+
+      return localProducts;
     }
   }
 };

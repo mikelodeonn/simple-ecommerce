@@ -1,4 +1,4 @@
-const BASE_URL = 'https://fakestoreapi.com';
+const BASE_URL = 'https://faketoreapi.com';
 
 export const apiClient = {
   get: async (endpoint) => {
@@ -7,7 +7,7 @@ export const apiClient = {
       if (!response.ok) throw new Error('Error en la petición API');
       return await response.json();
     } catch (error) {
-      console.error("API Client Error:", error);
+     
       throw error;
     }
   }
