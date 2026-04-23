@@ -29,19 +29,43 @@ export const IconSelector = ({ selectedIcon, onSelect }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { marginBottom: 20 },
-  label: { fontSize: 14, color: '#7F8C8D', marginBottom: 10, fontWeight: '600' },
+  container: { 
+    marginBottom: 30,
+    paddingVertical: 5 
+  },
+  label: { 
+    fontSize: 13, 
+    color: '#636E72', 
+    marginBottom: 15, 
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    letterSpacing: 1 
+  },
   iconItem: { 
-    padding: 10, 
-    marginRight: 10, 
-    borderRadius: 15, 
-    borderWidth: 2, 
-    borderColor: 'transparent',
-    backgroundColor: '#F8F9F9'
+    width: 65,
+    height: 65,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15, 
+    borderRadius: 20, 
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1.5, 
+    borderColor: '#F1F3F5',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    elevation: 2
   },
   iconSelected: { 
-    borderColor: '#2C3E50', 
-    backgroundColor: '#EAECEE' 
+    borderColor: '#1A1A1A',
+    backgroundColor: '#FFFFFF', 
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5,
+    transform: [{ scale: 1.05 }] 
   },
-  emoji: { fontSize: 28 }
+  emoji: { 
+    fontSize: 32 
+  }
 });
