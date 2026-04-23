@@ -48,7 +48,9 @@ export const Profile = ({ navigation }) => {
           <Text style={styles.menuText}>📝 Editar Información</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuItem}>
+        <TouchableOpacity style={styles.menuItem}
+        onPress={() => navigation.navigate('OrderHistory')}>
+          
           <Text style={styles.menuText}>📦 Mis Pedidos</Text>
         </TouchableOpacity>
 

@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Login } from '../features/auth/pages/Login';
 import { Register } from '../features/auth/pages/Register';
 import { Profile } from '../features/auth/pages/Profile';
+import { EditProfile } from '../features/auth/pages/EditProfile';
 import { ProductCatalog } from '../features/products/pages/ProductCatalog';
 import { ProductDetail } from '../features/products/pages/ProductDetail';
 import { Cart } from '../features/Cart/pages/Cart';
@@ -87,6 +88,13 @@ export const AppNavigator = () => {
               component={OrderHistory} 
               options={{ title: 'Mis Pedidos' }} 
             />
+
+            <Stack.Screen 
+              name="EditProfile" 
+              component={EditProfile} 
+              options={{ title: 'Editar Perfil' }} 
+            />
+
           </>
         ) : (
           <>
