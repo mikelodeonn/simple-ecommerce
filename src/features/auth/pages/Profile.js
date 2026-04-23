@@ -39,33 +39,84 @@ export const Profile = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#EAEDED' },
-  scroll: { padding: 15 },
+  container: { 
+    flex: 1, 
+    backgroundColor: '#F8F9FA' 
+  },
+  scroll: { 
+    padding: 20 
+  },
   header: { 
     backgroundColor: '#FFF', 
-    padding: 30, 
-    borderRadius: 8, 
+    paddingVertical: 40, 
+    paddingHorizontal: 20,
+    borderRadius: 24,
     alignItems: 'center', 
-    marginBottom: 20,
-    elevation: 2 
+    marginBottom: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.05,
+    shadowRadius: 15,
+    elevation: 3 
   },
-  emoji: { fontSize: 60, marginBottom: 10 },
-  name: { fontSize: 22, fontWeight: 'bold', color: '#232F3E' },
-  email: { color: 'gray', fontSize: 14 },
-  menu: { gap: 10 },
+  emojiContainer: {
+    backgroundColor: '#F1F3F5',
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 15
+  },
+  emoji: { 
+    fontSize: 50 
+  },
+  name: { 
+    fontSize: 24, 
+    fontWeight: '800', 
+    color: '#1A1A1A',
+    letterSpacing: -0.5
+  },
+  email: { 
+    color: '#6C757D', 
+    fontSize: 15,
+    marginTop: 4,
+    fontWeight: '400'
+  },
+  menu: { 
+    gap: 12 
+  },
   amazonBtn: { 
-    backgroundColor: '#F0C14B', 
-    padding: 15, 
-    borderRadius: 5, 
-    borderColor: '#A88734', 
+    backgroundColor: '#FFFFFF', 
+    paddingVertical: 18, 
+    paddingHorizontal: 20,
+    borderRadius: 16, 
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     borderWidth: 1, 
-    alignItems: 'center' 
+    borderColor: '#E9ECEF',
+    // Sombra sutil para cada item
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.03,
+    elevation: 1
   },
-  btnText: { color: '#111', fontSize: 16, fontWeight: '500' },
+  btnText: { 
+    color: '#2D3436', 
+    fontSize: 16, 
+    fontWeight: '600' 
+  },
   logoutBtn: { 
-    marginTop: 30, 
-    padding: 15, 
-    alignItems: 'center' 
+    marginTop: 40, 
+    padding: 20, 
+    borderRadius: 16,
+    alignItems: 'center',
+    backgroundColor: '#FFF1F2'
   },
-  logoutText: { color: '#007185', fontWeight: 'bold', fontSize: 16 }
+  logoutText: { 
+    color: '#FF4757', 
+    fontWeight: '700', 
+    fontSize: 16 
+  }
 });
