@@ -73,40 +73,94 @@ export const Login = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#FFF' },
-  content: { paddingHorizontal: 25, paddingTop: 40 },
-  title: { fontSize: 28, fontWeight: 'bold', marginBottom: 25, color: '#111' },
-  form: { marginBottom: 20 },
-  label: { fontWeight: 'bold', marginBottom: 8, fontSize: 14, color: '#111' },
-  input: { 
-    borderWidth: 1, 
-    borderColor: '#BBB', 
-    padding: 12, 
-    borderRadius: 4, 
-    marginBottom: 18, 
-    fontSize: 16 
+  container: { 
+    flex: 1, 
+    backgroundColor: '#F8F9FA' 
   },
-  loginBtn: { 
-    backgroundColor: '#FF9900', 
-    padding: 14, 
-    borderRadius: 4, 
-    alignItems: 'center', 
+  content: { 
+    paddingHorizontal: 30, 
+    paddingTop: 60,
+    justifyContent: 'center'
+  },
+  title: { 
+    fontSize: 32, 
+    fontWeight: '800', 
+    marginBottom: 10, 
+    color: '#1A1A1A',
+    letterSpacing: -0.5
+  },
+  subtitle: { 
+    fontSize: 16,
+    color: '#6C757D',
+    marginBottom: 30
+  },
+  form: { 
+    marginBottom: 10 
+  },
+  label: { 
+    fontWeight: '600', 
+    marginBottom: 8, 
+    fontSize: 14, 
+    color: '#495057' 
+  },
+  input: { 
+    backgroundColor: '#FFF',
+    borderWidth: 1, 
+    borderColor: '#E9ECEF', 
+    padding: 16, 
+    borderRadius: 12, 
+    marginBottom: 20, 
+    fontSize: 16,
+    color: '#212529',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
     elevation: 2
   },
-  loginBtnText: { fontSize: 16, fontWeight: '500' },
-  dividerContainer: { flexDirection: 'row', alignItems: 'center', marginVertical: 35 },
-  line: { flex: 1, height: 1, backgroundColor: '#DDD' },
-  dividerText: { marginHorizontal: 10, color: '#767676', fontSize: 12 },
-  createAccountBtn: { 
-    backgroundColor: '#F0F2F2', 
-    padding: 12, 
-    borderRadius: 4, 
+  loginBtn: { 
+    backgroundColor: '#007AFF', 
+    paddingVertical: 16, 
+    borderRadius: 12, 
     alignItems: 'center', 
-    borderWidth: 1, 
-    borderColor: '#D5D9D9' 
+    marginTop: 10,
+    shadowColor: '#007AFF',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 5
   },
-  createAccountBtnText: { color: '#111', fontSize: 14 }
+  loginBtnText: { 
+    fontSize: 18, 
+    fontWeight: '700', 
+    color: '#FFF' 
+  },
+  dividerContainer: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    marginVertical: 40 
+  },
+  line: { 
+    flex: 1, 
+    height: 1, 
+    backgroundColor: '#DEE2E6' 
+  },
+  dividerText: { 
+    marginHorizontal: 15, 
+    color: '#ADB5BD', 
+    fontSize: 14,
+    fontWeight: '500'
+  },
+  createAccountBtn: { 
+    padding: 16, 
+    borderRadius: 12, 
+    alignItems: 'center', 
+    borderWidth: 1.5, 
+    borderColor: '#007AFF' 
+  },
+  createAccountBtnText: { 
+    color: '#007AFF', 
+    fontSize: 16, 
+    fontWeight: '600' 
+  }
 });
