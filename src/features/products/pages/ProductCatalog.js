@@ -52,44 +52,67 @@ export const ProductCatalog = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F4F7F6' },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: '800',
-    padding: 20,
-    color: '#2C3E50'
+  container: { 
+    flex: 1, 
+    backgroundColor: '#F8F9FA' 
   },
-  listContent: { paddingHorizontal: 8, paddingBottom: 30 },
+  center: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    padding: 20
+  },
+  headerTitle: {
+    fontSize: 28, 
+    fontWeight: '800',
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 10,
+    color: '#1A1A1A', 
+    letterSpacing: -0.8
+  },
   filterList: {
-    paddingVertical: 15,
-    maxHeight: 70, 
-    backgroundColor: '#FFFFFF',
+    paddingVertical: 12,
+    maxHeight: 80, 
+    backgroundColor: '#F8F9FA', 
   },
   chip: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 18,
     paddingVertical: 10,
-    marginHorizontal: 8,
-    borderRadius: 25,
-    backgroundColor: '#E0E0E0',
-    height: 40,
+    marginHorizontal: 6,
+    borderRadius: 14, 
+    backgroundColor: '#FFFFFF',
+    height: 44,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 5,
+    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#E9ECEF'
   },
   chipSelected: {
-    backgroundColor: '#2C3E50', 
+    backgroundColor: '#1A1A1A', 
+    borderColor: '#1A1A1A',
+    shadowColor: '#1A1A1A',
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 5
   },
   textChip: {
-    color: '#7F8C8D',
+    color: '#636E72', 
     fontWeight: '600',
+    fontSize: 14,
   },
   textSelected: {
     color: '#FFFFFF',
-    fontWeight: 'bold',
+    fontWeight: '700',
+    fontSize: 14,
   },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   listContent: {
-    paddingHorizontal: 8,
-    paddingBottom: 30
+    paddingHorizontal: 12,
+    paddingBottom: 40 
   }
 });

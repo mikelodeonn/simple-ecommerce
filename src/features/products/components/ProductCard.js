@@ -39,43 +39,66 @@ const cardWidth = (width / 2) - 15;
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#fff',
-        borderRadius: 12,
-        margin: 7,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 20,
+        margin: 8,
         flex: 1,
-        elevation: 4,
+        width: cardWidth,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.05,
+        shadowRadius: 10,
+        elevation: 3,
         overflow: 'hidden',
-        width: cardWidth
+        borderWidth: 1,
+        borderColor: '#F1F3F5' 
     },
-    image: { width: '100%', height: 140, backgroundColor: '#fff', marginTop: 10 },
-    info: { padding: 12 },
-    title: { fontSize: 14, fontWeight: '600', color: '#333', height: 40 },
-    seller: { fontSize: 11, color: '#777', marginBottom: 4 },
-    price: { fontSize: 16, fontWeight: 'bold', color: '#1a1a1a' },
+    image: { 
+        width: '100%', 
+        height: 160, 
+        backgroundColor: '#F8F9FA', 
+        resizeMode: 'contain'
+    },
+    info: { 
+        padding: 14 
+    },
+    title: { 
+        fontSize: 15, 
+        fontWeight: '600', 
+        color: '#1A1A1A', 
+        height: 42, 
+        lineHeight: 20
+    },
+    seller: { 
+        fontSize: 12, 
+        color: '#A0AEC0', 
+        marginBottom: 6,
+        fontWeight: '500'
+    },
     ratingContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 4,
-        marginBottom: 4,
+        marginBottom: 8,
+        backgroundColor: '#FFFBEB', 
+        alignSelf: 'flex-start',
+        paddingHorizontal: 6,
+        paddingVertical: 2,
+        borderRadius: 6
     },
     ratingText: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        color: '#F1C40F', 
+        fontSize: 13,
+        fontWeight: '800',
+        color: '#F39C12', 
         marginRight: 4,
     },
     countText: {
-        fontSize: 12,
-        color: '#7F8C8D', 
+        fontSize: 11,
+        color: '#94A3B8', 
     },
     price: {
-        fontSize: 16,
-        fontWeight: '700',
-        color: '#2C3E50',
-        marginTop: 2,
+        fontSize: 18,
+        fontWeight: '900',
+        color: '#1A1A1A', 
+        marginTop: 4,
     },
 });
