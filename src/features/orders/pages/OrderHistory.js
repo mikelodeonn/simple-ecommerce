@@ -67,12 +67,61 @@ export const OrderHistory = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#EAEDED' },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  card: { backgroundColor: '#FFF', padding: 15, borderRadius: 5, marginBottom: 15, borderLeftWidth: 4, borderLeftColor: '#FF9900' },
-  orderLabel: { fontWeight: 'bold', fontSize: 16 },
-  date: { color: 'gray' },
-  total: { fontWeight: 'bold', color: '#B12704', fontSize: 18 },
-  delete: { color: '#007185', marginTop: 10 },
-  empty: { textAlign: 'center', marginTop: 50, color: 'gray' }
+  container: { 
+    flex: 1, 
+    backgroundColor: '#F8F9FA' 
+  },
+  center: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    padding: 20
+  },
+  card: { 
+    backgroundColor: '#FFFFFF', 
+    padding: 20, 
+    marginHorizontal: 16,
+    marginVertical: 8,
+    borderRadius: 16, 
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 3,
+    borderLeftWidth: 5, 
+    borderLeftColor: '#007AFF' 
+  },
+  orderLabel: { 
+    fontWeight: '700', 
+    fontSize: 17,
+    color: '#1A1A1A',
+    marginBottom: 4
+  },
+  date: { 
+    color: '#95A5A6', 
+    fontSize: 14,
+    fontWeight: '500'
+  },
+  total: { 
+    fontWeight: '800', 
+    color: '#2D3436', 
+    fontSize: 20,
+    marginTop: 10,
+    textAlign: 'right'
+  },
+  delete: { 
+    color: '#FF4757', 
+    marginTop: 12,
+    fontWeight: '600',
+    fontSize: 14,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5
+  },
+  empty: { 
+    textAlign: 'center', 
+    marginTop: 100, 
+    color: '#B2BEC3',
+    fontSize: 16,
+    fontWeight: '500'
+  }
 });

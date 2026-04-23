@@ -43,19 +43,121 @@ export const Cart = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F4F7F6' },
-  card: { flexDirection: 'row', padding: 15, backgroundColor: '#FFF', margin: 10, borderRadius: 12, elevation: 2 },
-  img: { width: 70, height: 70, borderRadius: 8 },
-  info: { flex: 1, marginLeft: 15 },
-  title: { fontSize: 16, fontWeight: 'bold', color: '#2C3E50' },
-  price: { color: '#27AE60', fontWeight: 'bold', marginVertical: 4 },
-  controls: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
-  qtyBtn: { backgroundColor: '#EEE', padding: 8, borderRadius: 5, width: 35, alignItems: 'center' },
-  qtyText: { marginHorizontal: 15, fontWeight: 'bold' },
-  delete: { marginLeft: 'auto' },
-  footer: { padding: 20, backgroundColor: '#FFF', borderTopLeftRadius: 20, borderTopRightRadius: 20 },
-  total: { fontSize: 22, fontWeight: 'bold', textAlign: 'right', marginBottom: 15 },
-  mainBtn: { backgroundColor: '#2C3E50', padding: 18, borderRadius: 12, alignItems: 'center' },
-  btnText: { color: '#FFF', fontWeight: 'bold' },
-  empty: { textAlign: 'center', marginTop: 50, color: '#95A5A6' }
+  container: { 
+    flex: 1, 
+    backgroundColor: '#F1F3F5' 
+  },
+  card: { 
+    flexDirection: 'row', 
+    padding: 16, 
+    backgroundColor: '#FFFFFF', 
+    marginHorizontal: 16, 
+    marginVertical: 8, 
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 3 
+  },
+  img: { 
+    width: 85, 
+    height: 85, 
+    borderRadius: 15,
+    backgroundColor: '#F8F9FA' 
+  },
+  info: { 
+    flex: 1, 
+    marginLeft: 18,
+    justifyContent: 'space-between' 
+  },
+  title: { 
+    fontSize: 17, 
+    fontWeight: '700', 
+    color: '#1A1A1A',
+    lineHeight: 22 
+  },
+  price: { 
+    color: '#00B894', 
+    fontWeight: '800', 
+    fontSize: 18,
+    marginVertical: 2 
+  },
+  controls: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    marginTop: 8 
+  },
+  qtyBtn: { 
+    backgroundColor: '#F1F3F5', 
+    paddingVertical: 6, 
+    borderRadius: 10, 
+    width: 38, 
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E9ECEF'
+  },
+  qtyText: { 
+    marginHorizontal: 14, 
+    fontWeight: '700',
+    fontSize: 16,
+    color: '#2D3436' 
+  },
+  delete: { 
+    marginLeft: 'auto',
+    padding: 5
+  },
+  footer: { 
+    paddingHorizontal: 25, 
+    paddingTop: 25,
+    paddingBottom: 40, 
+    backgroundColor: '#FFFFFF', 
+    borderTopLeftRadius: 30, 
+    borderTopRightRadius: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -10 },
+    shadowOpacity: 0.05,
+    shadowRadius: 15,
+    elevation: 10
+  },
+  totalContainer: { 
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20
+  },
+  totalLabel: {
+    fontSize: 16,
+    color: '#636E72',
+    fontWeight: '600'
+  },
+  total: { 
+    fontSize: 26, 
+    fontWeight: '900', 
+    color: '#1A1A1A'
+  },
+  mainBtn: { 
+    backgroundColor: '#1A1A1A',
+    padding: 18, 
+    borderRadius: 16, 
+    alignItems: 'center',
+    shadowColor: '#1A1A1A',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 6
+  },
+  btnText: { 
+    color: '#FFF', 
+    fontWeight: '700',
+    fontSize: 18,
+    letterSpacing: 0.5 
+  },
+  empty: { 
+    textAlign: 'center', 
+    marginTop: 100, 
+    color: '#B2BEC3',
+    fontSize: 16,
+    fontWeight: '500' 
+  }
 });
