@@ -1,12 +1,14 @@
-import { SafeAreaView } from "react-native";
-import { ProductCatalog } from "./src/features/products/pages/ProductCatalog";
-import { AppNavigator } from "./src/navigation/AppNavigator";
-import { AuthProvider } from "./src/context/AuthContext";
+import React from 'react';
+import { AuthProvider } from './src/context/AuthContext';
+import { CartProvider } from './src/context/CartContext';
+import { AppNavigator } from './src/navigation/AppNavigator';
 
 export default function App() {
   return (
     <AuthProvider>
-      <AppNavigator/>
+      <CartProvider>
+        <AppNavigator />
+      </CartProvider>
     </AuthProvider>
   );
 }
