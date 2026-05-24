@@ -52,7 +52,7 @@ export const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         headerStyle: { backgroundColor: '#232F3E' },
-        headerTintColor: '#FFFFFF'
+        headerTintColor: '#f0e9e9'
       }}>
         {!user ? (
           <>
