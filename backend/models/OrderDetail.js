@@ -7,10 +7,14 @@ const OrderDetailSchema = new mongoose.Schema(
       ref: "Order",
       required: true,
     },
+    productos:[{
     nombresProductos: [{ type: String, required: true }],
     cantidad: { type: Number, required: true },
-    precioTotal: { type: Number, required: true },
+    precioUnitario: { type: Number }
+    }],
+    precioTotal: { type: Number, required: true },        
   },
+  
   { timestamps: true },
 ); 
 
