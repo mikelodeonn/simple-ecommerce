@@ -39,7 +39,7 @@ const cardWidth = (width / 2) - 15;
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#d0d7a5',
         borderRadius: 20,
         margin: 8,
         flex: 1,
@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
         elevation: 3,
         overflow: 'hidden',
         borderWidth: 1,
-        borderColor: '#F1F3F5' 
+        borderColor: '#d1e2be' 
     },
     image: { 
         width: '100%', 
         height: 160, 
-        backgroundColor: '#F8F9FA', 
+        backgroundColor: '#9ca467', 
         resizeMode: 'contain'
     },
     info: { 
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     },
     seller: { 
         fontSize: 12, 
-        color: '#A0AEC0', 
+        color: '#3b516d', 
         marginBottom: 6,
         fontWeight: '500'
     },
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 8,
-        backgroundColor: '#FFFBEB', 
+        backgroundColor: '#f3efde', 
         alignSelf: 'flex-start',
         paddingHorizontal: 6,
         paddingVertical: 2,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     ratingText: {
         fontSize: 13,
         fontWeight: '800',
-        color: '#F39C12', 
+        color: '#5f6b41', 
         marginRight: 4,
     },
     countText: {
