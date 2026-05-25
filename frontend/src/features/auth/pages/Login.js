@@ -76,7 +76,7 @@ export const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#828b70'
   },
   content: {
     paddingHorizontal: 32,

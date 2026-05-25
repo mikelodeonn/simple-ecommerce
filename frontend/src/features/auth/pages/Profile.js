@@ -41,20 +41,20 @@ export const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#F8F9FA',
+    backgroundColor: '#aabc84',
     marginTop: 30
   },
   scroll: { 
     padding: 20 
   },
   header: { 
-    backgroundColor: '#FFF', 
+    backgroundColor: '#040504', 
     paddingVertical: 40, 
     paddingHorizontal: 20,
     borderRadius: 24,
     alignItems: 'center', 
     marginBottom: 30,
-    shadowColor: '#000',
+    shadowColor: '#f6efef',
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.05,
     shadowRadius: 15,
@@ -75,11 +75,11 @@ const styles = StyleSheet.create({
   name: { 
     fontSize: 24, 
     fontWeight: '800', 
-    color: '#1A1A1A',
+    color: '#f8f0f0',
     letterSpacing: -0.5
   },
   email: { 
-    color: '#6C757D', 
+    color: '#f3f6f9', 
     fontSize: 15,
     marginTop: 4,
     fontWeight: '400'
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     gap: 12 
   },
   amazonBtn: { 
-    backgroundColor: '#FFFFFF', 
+    backgroundColor: '#0c0b0b', 
     paddingVertical: 18, 
     paddingHorizontal: 20,
     borderRadius: 16, 
@@ -97,14 +97,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 1, 
     borderColor: '#E9ECEF',
-    // Sombra sutil para cada item
-    shadowColor: '#000',
+    shadowColor: '#fbf8f8',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.03,
     elevation: 1
   },
   btnText: { 
-    color: '#2D3436', 
+    color: '#e8ebeb', 
     fontSize: 16, 
     fontWeight: '600' 
   },
@@ -113,10 +112,10 @@ const styles = StyleSheet.create({
     padding: 20, 
     borderRadius: 16,
     alignItems: 'center',
-    backgroundColor: '#FFF1F2'
+    backgroundColor: '#030303'
   },
   logoutText: { 
-    color: '#FF4757', 
+    color: '#f7eff0', 
     fontWeight: '700', 
     fontSize: 16 
   }

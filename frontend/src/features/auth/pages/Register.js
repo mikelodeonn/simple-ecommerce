@@ -80,7 +80,7 @@ export const Register = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#FFFFFF' 
+    backgroundColor: '#828b70' 
   },
   scrollContent: { 
     paddingHorizontal: 30, 
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   subtitle: { 
     fontSize: 15,
-    color: '#636E72',
+    color: '#040404',
     marginBottom: 35
   },
   form: { 
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: '600', 
     marginBottom: 8, 
     fontSize: 13, 
-    color: '#2D3436',
+    color: '#0a0b0b',
     textTransform: 'uppercase',
     letterSpacing: 0.5
   },
@@ -118,10 +118,10 @@ const styles = StyleSheet.create({
     borderRadius: 14, 
     marginBottom: 22, 
     fontSize: 16,
-    color: '#2D3436'
+    color: '#040404'
   },
   registerBtn: { 
-    backgroundColor: '#1A1A1A', 
+    backgroundColor: '#0a0a09', 
     padding: 18, 
     borderRadius: 14, 
     alignItems: 'center', 
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   registerBtnText: { 
     fontSize: 17, 
-    color: '#FFF', 
+    color: '#f6f8f3', 
     fontWeight: '700' 
   },
   disclaimer: { 

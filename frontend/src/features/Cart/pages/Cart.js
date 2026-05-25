@@ -45,13 +45,13 @@ export const Cart = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#F1F3F5', 
+    backgroundColor: '#d8decc', 
     marginTop: 30
   },
   card: { 
     flexDirection: 'row', 
     padding: 16, 
-    backgroundColor: '#FFFFFF', 
+    backgroundColor: '#41423d', 
     marginHorizontal: 16, 
     marginVertical: 8, 
     borderRadius: 20,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   title: { 
     fontSize: 17, 
     fontWeight: '700', 
-    color: '#1A1A1A',
+    color: '#f4eded',
     lineHeight: 22 
   },
   price: { 
