@@ -103,7 +103,7 @@ export const EditProfile = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#F8F9FA' 
+    backgroundColor: '#828b70' 
   },
   scroll: { 
     padding: 25 
