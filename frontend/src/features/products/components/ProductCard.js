@@ -8,7 +8,7 @@ export const ProductCard = ({ product }) => {
 
     const imageSource = typeof product.image === 'string'
         ? { uri: product.image }
-        : product.image;
+        : product.image; 
 
 
 
@@ -39,7 +39,7 @@ const cardWidth = (width / 2) - 15;
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#d0d7a5',
+        backgroundColor: '#deb497',
         borderRadius: 20,
         margin: 8,
         flex: 1,
