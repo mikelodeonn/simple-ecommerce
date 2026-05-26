@@ -10,6 +10,7 @@ import {
   SafeAreaView 
 } from 'react-native';
 import { useAuth } from '../../../context/AuthContext';
+import { userService } from '../services/UserService';
 
 export const EditProfile = ({ navigation }) => {
   const { user, updateUser, deleteAccount } = useAuth();
