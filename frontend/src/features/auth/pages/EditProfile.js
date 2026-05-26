@@ -10,7 +10,6 @@ import {
   SafeAreaView 
 } from 'react-native';
 import { useAuth } from '../../../context/AuthContext';
-import { userService } from '../services/UserService';
 
 export const EditProfile = ({ navigation }) => {
   const { user, updateUser, deleteAccount } = useAuth();
@@ -43,9 +42,14 @@ export const EditProfile = ({ navigation }) => {
           text: "Delete permanently", 
           style: "destructive", 
           onPress: async () => {
-            await deleteAccount();
-          } 
-        }
+            try {
+              await deleteAccount();
+              navigation.replace("Register"); // Redirige a registro
+            } catch {
+              Alert.alert("Error", "Account deletion failed");
+            } 
+        }}
+
       ]
     );
   };
