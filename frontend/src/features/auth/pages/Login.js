@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ActivityIndicator, SafeAreaView } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  StyleSheet, 
+  Alert, 
+  ActivityIndicator, 
+  SafeAreaView,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform
+} from 'react-native';
 import { useAuth } from '../../../context/AuthContext';
 import { userService } from '../services/UserService';
 
@@ -9,18 +21,29 @@ export const Login = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
 
+  const APP_NAME = "Amazing App";
+
   const handleLogin = async () => {
-    if (!email || !password) return Alert.alert("Error", "Please fill in all fields");
+    // Sanitización de strings básicos
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanPassword = password.trim();
+
+    if (!cleanEmail || !cleanPassword) {
+      return Alert.alert("Error", "Please fill in all fields");
+    }
+
     setLoading(true);
     try {
-      const foundUser = await userService.validateLogin(email, password);
+      const foundUser = await userService.validateLogin(cleanEmail, cleanPassword);
+      
       if (foundUser) {
         await login(foundUser);
       } else {
-        Alert.alert("Amazon", "Account not found or incorrect credentials");
+        Alert.alert(APP_NAME, "Account not found or incorrect credentials");
       }
     } catch (e) {
-      Alert.alert("Error", "Connection failed");
+      console.error("Login Error:", e); // Log interno para debugging
+      Alert.alert("Error", "Connection failed. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -28,47 +51,74 @@ export const Login = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.appName}>AMAZING APP</Text>
-        <Text style={styles.title}>Sign-In</Text>
-
-        <View style={styles.form}>
-          <Text style={styles.label}>Email</Text>
-          <TextInput
-            style={styles.input}
-            value={email}
-            onChangeText={setEmail}
-            autoCapitalize="none"
-            keyboardType="email-address"
-            placeholder="example@email.com"
-          />
-
-          <Text style={styles.label}>Password</Text>
-          <TextInput
-            style={styles.input}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
-
-          <TouchableOpacity style={styles.loginBtn} onPress={handleLogin} disabled={loading}>
-            {loading ? <ActivityIndicator color="#000" /> : <Text style={styles.loginBtnText}>Continue</Text>}
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.dividerContainer}>
-          <View style={styles.line} />
-          <Text style={styles.dividerText}>New to Amazing App?</Text>
-          <View style={styles.line} />
-        </View>
-
-        <TouchableOpacity
-          style={styles.createAccountBtn}
-          onPress={() => navigation.navigate('Register')}
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
+        style={styles.keyboardView}
+      >
+        <ScrollView 
+          contentContainerStyle={styles.scrollContent} 
+          showsVerticalScrollIndicator={false}
         >
-          <Text style={styles.createAccountBtnText}>Create your Amazing App account</Text>
-        </TouchableOpacity>
-      </View>
+          <Text style={styles.appName}>{APP_NAME.toUpperCase()}</Text>
+          <Text style={styles.title}>Sign-In</Text>
+
+          <View style={styles.form}>
+            <Text style={styles.label}>Email</Text>
+            <TextInput
+              style={styles.input}
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="email-address"
+              textContentType="emailAddress" // Ayuda al autocompletado del sistema operativo
+              placeholder="example@email.com"
+              placeholderTextColor="#8E8E93"
+              editable={!loading}
+            />
+
+            <Text style={styles.label}>Password</Text>
+            <TextInput
+              style={styles.input}
+              value={password}
+              onChangeText={setPassword}
+              autoCapitalize="none"
+              autoCorrect={false}
+              secureTextEntry
+              textContentType="password" // Permite usar el llavero/Keychain de contraseñas
+              placeholder="••••••••"
+              placeholderTextColor="#8E8E93"
+              editable={!loading}
+            />
+
+            <TouchableOpacity 
+              style={[styles.loginBtn, loading && styles.disabledBtn]} 
+              onPress={handleLogin} 
+              disabled={loading}
+            >
+              {loading ? (
+                <ActivityIndicator color="#FFF" /> // Cambiado a blanco para mejor contraste sobre fondo negro
+              ) : (
+                <Text style={styles.loginBtnText}>Continue</Text>
+              )}
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.dividerContainer}>
+            <View style={styles.line} />
+            <Text style={styles.dividerText}>New to {APP_NAME}?</Text>
+            <View style={styles.line} />
+          </View>
+
+          <TouchableOpacity
+            style={[styles.createAccountBtn, loading && styles.disabledBtn]}
+            onPress={() => navigation.navigate('Register')}
+            disabled={loading}
+          >
+            <Text style={styles.createAccountBtnText}>Create your account</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -78,10 +128,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#828b70'
   },
-  content: {
+  keyboardView: {
+    flex: 1,
+  },
+  scrollContent: {
     paddingHorizontal: 32,
-    paddingTop: 40, 
-    justifyContent: 'flex-start'
+    paddingTop: 40,
+    paddingBottom: 24,
   },
   appName: {
     fontSize: 14,
@@ -97,12 +150,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: '#121212',
     letterSpacing: -1.2
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#cfcfd4',
-    marginBottom: 40,
-    lineHeight: 22
   },
   form: {
     marginBottom: 15
@@ -137,6 +184,9 @@ const styles = StyleSheet.create({
     shadowRadius: 15,
     elevation: 8
   },
+  disabledBtn: {
+    opacity: 0.6,
+  },
   loginBtnText: {
     fontSize: 18,
     fontWeight: '700',
@@ -155,7 +205,7 @@ const styles = StyleSheet.create({
   },
   dividerText: {
     marginHorizontal: 15,
-    color: '#8E8E93',
+    color: '#4A4A4F', // Ajustado para mejor legibilidad sobre fondo oliva oscuro (#828b70)
     fontSize: 13,
     fontWeight: '600'
   },
